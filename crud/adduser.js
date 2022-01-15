@@ -16,7 +16,6 @@ const addUser = (body) => {
     credit :(body.hasOwnProperty("credit")?body.credit : 0),
 
   });
-  console.log(body);
   saveUsers(users);
   return stringToJson("new-client", body);
  

@@ -1,19 +1,19 @@
 const e = require("express");
 const fs = require("fs");
 const { loadUsers, saveUsers, stringToJson } = require("./utils");
-const deposit = (id, amount) => {
-  const usersData = loadUsers();
-
+const updateCredit = (id, newCredit) => {
+    if(parseInt(newCredit)<0) return "positve credit only !! "
+    const usersData = loadUsers();
   for (let i = 0; i < usersData.length; i++) {
     if (usersData[i].id === id) {
-      usersData[i].cash = parseInt(usersData[i].cash) + parseInt(amount);
+      usersData[i].credit = newCredit ;
       break;
     }
   }
   saveUsers(usersData);
-  return " deposit done";
+  return " updateCredit done";
 };
 
 module.exports = {
-  deposit,
+    updateCredit,
 };
