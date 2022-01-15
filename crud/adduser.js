@@ -1,12 +1,20 @@
 const fs = require("fs");
-const { loadUsers} = require('./utils');
+const { loadUsers, saveUsers, stringToJson ,isUserExist } = require("./utils");
 
 const addUser = (body) => {
-  const usersJasoN =  stringify()
-
+  console.log(body);
+  const users = loadUsers();
+  users.find((user) => {
+    if (user.id === body.id) {
+      throw Error("The user is allready exist");
+    }
+  });
+  users.push(body);
+  console.log(body);
+  saveUsers(users);
+  return stringToJson("new-client", body);
+ 
 };
-
-
 
 module.exports = {
   addUser,
