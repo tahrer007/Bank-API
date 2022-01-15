@@ -13,7 +13,7 @@ const getSingleUser = (id) => {
   });
   //throw Error(`there is no user with id ${id}`);
   if (user) return user;
-  return "there there is no " + id + "id";
+  return " there is no " + id + " id";
 };
 module.exports = {
   getSingleUser,
