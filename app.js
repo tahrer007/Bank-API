@@ -17,7 +17,6 @@ app.get("/users", (req, res) => {
 app.post('/new', (req, res) => {
   
   try {
-    console.log("body ",req.body)
     res.status(201).send(addUser(req.body));
   } catch (e) {
     res.status(400).send({ error: e.message });
@@ -28,14 +27,22 @@ app.post('/new', (req, res) => {
 //get user by id 
 app.get("/:id", (req, res) => {
   try {
-      //console.log("asdfsdfadsfdsafaf",getSingleUser(req.params.id))
     res.status(200).send(getSingleUser(req.params.id));
   } catch (e) {
     res.status(400).send({ error: e.message });
   }
 });
-
-// add deposit 
+// actions 
+app.put('/deposit/:id', function (req, res) {
+console.log(req.body) ;
+const user = getSingleUser(req.params.id);
+user.cash = parseInt(user.cash)+parseInt(req.body.amount) ;
+//************************************************** */
+/*JSONObject person =  jsonArray.getJSONObject(0).getJSONObject("person");
+person.put("name", "Sammie");*/
+  
+  res.send('user cash updated !!')
+})
 
 app.listen(3000, () => {
   console.log("hello server 3000 !! ");
