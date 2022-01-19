@@ -1,25 +1,19 @@
 const fs = require("fs");
-const loadUsers = () => {
-  try {
-    const dataBuffer = fs.readFileSync("./db/users.json");
-    const dataJSON = dataBuffer.toString();
-    return JSON.parse(dataJSON);
-  } catch (e) {
-    return [];
-  }
-};
+const loadUsers = () => JSON.parse(fs.readFileSync("./db/users.json", "utf-8"));
+
+const isUserExist = (users, userId) => users.some((user) => user.id === userId);
 
 const saveUsers = (users) => {
-  const dataJSON = JSON.stringify(users);
-  fs.writeFileSync("./db/users.json", dataJSON);
+  fs.writeFileSync("./db/users.json", JSON.stringify(users));
 };
+
 const stringToJson = (message, string, message2, string2) => {
   return JSON.stringify({ [message]: string, [message2]: string2 });
 };
 
 module.exports = {
+  isUserExist,
   loadUsers,
   stringToJson,
   saveUsers,
- 
 };

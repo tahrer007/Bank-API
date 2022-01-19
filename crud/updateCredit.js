@@ -10,6 +10,10 @@ const updateCredit = (id, newCredit) => {
       break;
     }
   }
+
+  
+
+  // findUserById and change it 
   saveUsers(usersData);
   return " updateCredit done";
 };

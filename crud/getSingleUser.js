@@ -1,16 +1,16 @@
 const fs = require("fs");
+const { deposit } = require("./deposit");
 const { loadUsers } = require("./utils");
 
 const getSingleUser = (id) => {
-  let user;
   const users = loadUsers();
-  users.forEach((element) => {
-    if (element.id === id) {
-      user = element;
-    }
-  });
-  //throw Error(`there is no user with id ${id}`);
-  if (user) return user;
+  const user = users.find((user) => user.id === id);
+  // utils function that called findUserById
+  // move it to utils
+
+
+  // if (!user) throw Error(`there is no user with id ${id}`);;
+  // use it inside the contoller with try and catch
   return " there is no " + id + " id";
 };
 module.exports = {
